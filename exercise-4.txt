@@ -1,0 +1,94 @@
+Exercise 4
+Modify the decodemtl_addressbook.Account row
+Modify the decodemtl_addressbook.AddressBook row
+Modify the three decodemtl_addressbook.Entry rows using one query only
+
+
+mysql> use decodemtl_addressbook
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+
+
+mysql> show tables;
++---------------------------------+
+| Tables_in_decodemtl_addressbook |
++---------------------------------+
+| Account                         |
+| AddressBook                     |
+| Entry                           |
++---------------------------------+
+3 rows in set (0.00 sec)
+
+
+mysql> SELECT * FROM Account;
++----+-----------------+----------+---------------------+---------------------+
+| id | email           | password | createdOn           | modifiedOn          |
++----+-----------------+----------+---------------------+---------------------+
+|  1 | hello@gmail.com | hello    | 2016-07-15 00:00:00 | 2016-07-18 00:00:00 |
++----+-----------------+----------+---------------------+---------------------+
+1 row in set (0.01 sec)
+
+
+
+mysql> UPDATE Account SET email = 'bye@gmail.com', password = 'bye' WHERE id = 1;
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM Account;
++----+---------------+----------+---------------------+---------------------+
+| id | email         | password | createdOn           | modifiedOn          |
++----+---------------+----------+---------------------+---------------------+
+|  1 | bye@gmail.com | bye      | 2016-07-15 00:00:00 | 2016-07-18 00:00:00 |
++----+---------------+----------+---------------------+---------------------+
+1 row in set (0.00 sec)
+
+
+mysql> SELECT * FROM AddressBook;
++----+-----------+------+---------------------+---------------------+
+| id | accountId | name | createdOn           | modifiedOn          |
++----+-----------+------+---------------------+---------------------+
+|  1 | 230504350 | John | 2016-06-21 00:00:00 | 2016-07-18 00:00:00 |
++----+-----------+------+---------------------+---------------------+
+1 row in set (0.00 sec)
+
+
+mysql> UPDATE AddressBook SET accountID = 394530453, name = 'Jim' WHERE id = 1;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM AddressBook;
++----+-----------+------+---------------------+---------------------+
+| id | accountId | name | createdOn           | modifiedOn          |
++----+-----------+------+---------------------+---------------------+
+|  1 | 394530453 | Jim  | 2016-06-21 00:00:00 | 2016-07-18 00:00:00 |
++----+-----------+------+---------------------+---------------------+
+1 row in set (0.00 sec)
+
+
+
+mysql> SELECT * FROM Entry;
++----+---------------+-----------+----------+---------------------+-------+---------+----------------+---------------------+------------------+-----------------+-----------------+
+| id | addressBookId | firstName | lastName | birthday            | type  | subtype | contentLineOne | contentLineTwo      | contentLineThree | contentLineFour | contentLineFive |
++----+---------------+-----------+----------+---------------------+-------+---------+----------------+---------------------+------------------+-----------------+-----------------+
+|  1 |     204603405 | John      | Cena     | 1993-01-21 00:00:00 | home  | phone   | hello im john  | NULL                | NULL             | NULL            | NULL            |
+|  2 |     523456304 | Bob       | Sponge   | 1989-06-21 00:00:00 | work  | email   |                | hello im sponge bob | NULL             | NULL            | NULL            |
+|  3 |     234567567 | Cow       | Sheep    | 2000-06-08 00:00:00 | other | address | animals        | NULL                | NULL             | NULL            | NULL            |
++----+---------------+-----------+----------+---------------------+-------+---------+----------------+---------------------+------------------+-----------------+-----------------+
+3 rows in set (0.00 sec)
+
+
+mysql> UPDATE Entry SET lastname = 'scooby' WHERE id = 1 or id = 2 or id = 3;                                                                   
+Query OK, 3 rows affected (0.00 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> select * FROM Entry;
++----+---------------+-----------+----------+---------------------+-------+---------+----------------+---------------------+------------------+-----------------+-----------------+
+| id | addressBookId | firstName | lastName | birthday            | type  | subtype | contentLineOne | contentLineTwo      | contentLineThree | contentLineFour | contentLineFive |
++----+---------------+-----------+----------+---------------------+-------+---------+----------------+---------------------+------------------+-----------------+-----------------+
+|  1 |     204603405 | John      | scooby   | 1993-01-21 00:00:00 | home  | phone   | hello im john  | NULL                | NULL             | NULL            | NULL            |
+|  2 |     523456304 | Bob       | scooby   | 1989-06-21 00:00:00 | work  | email   |                | hello im sponge bob | NULL             | NULL            | NULL            |
+|  3 |     234567567 | Cow       | scooby   | 2000-06-08 00:00:00 | other | address | animals        | NULL                | NULL             | NULL            | NULL            |
++----+---------------+-----------+----------+---------------------+-------+---------+----------------+---------------------+------------------+-----------------+-----------------+
+3 rows in set (0.00 sec)
