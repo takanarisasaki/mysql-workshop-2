@@ -1,0 +1,49 @@
+Exercise 5
+Delete all data from decodemtl_addressbook.Entry without using a DELETE statement
+
+
+mysql> show databases;
++-----------------------+
+| Database              |
++-----------------------+
+| information_schema    |
+| c9                    |
+| decodemtl_addressbook |
+| mysql                 |
+| performance_schema    |
+| phpmyadmin            |
++-----------------------+
+6 rows in set (0.01 sec)
+
+mysql> use decodemtl_addressbook
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+
+mysql> show tables;
++---------------------------------+
+| Tables_in_decodemtl_addressbook |
++---------------------------------+
+| Account                         |
+| AddressBook                     |
+| Entry                           |
++---------------------------------+
+3 rows in set (0.00 sec)
+
+
+mysql> select * FROM Entry;
++----+---------------+-----------+----------+---------------------+-------+---------+----------------+---------------------+------------------+-----------------+-----------------+
+| id | addressBookId | firstName | lastName | birthday            | type  | subtype | contentLineOne | contentLineTwo      | contentLineThree | contentLineFour | contentLineFive |
++----+---------------+-----------+----------+---------------------+-------+---------+----------------+---------------------+------------------+-----------------+-----------------+
+|  1 |     204603405 | John      | scooby   | 1993-01-21 00:00:00 | home  | phone   | hello im john  | NULL                | NULL             | NULL            | NULL            |
+|  2 |     523456304 | Bob       | scooby   | 1989-06-21 00:00:00 | work  | email   |                | hello im sponge bob | NULL             | NULL            | NULL            |
+|  3 |     234567567 | Cow       | scooby   | 2000-06-08 00:00:00 | other | address | animals        | NULL                | NULL             | NULL            | NULL            |
++----+---------------+-----------+----------+---------------------+-------+---------+----------------+---------------------+------------------+-----------------+-----------------+
+3 rows in set (0.00 sec)
+
+
+mysql> TRUNCATE TABLE Entry;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> SELECT * FROM Entry;
+Empty set (0.00 sec)
