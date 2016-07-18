@@ -1,0 +1,79 @@
+Exercise 2:
+Insert one row into decodemtl_addressbook.Account
+Insert one row into decodemtl_addressbook.AddressBook
+Insert three rows into decodemtl_addressbook.Entry
+
+mysql> show databases;
++-----------------------+
+| Database              |
++-----------------------+
+| information_schema    |
+| c9                    |
+| decodemtl_addressbook |
+| mysql                 |
+| performance_schema    |
+| phpmyadmin            |
++-----------------------+
+6 rows in set (0.00 sec)
+
+mysql> use decodemtl_addressbook;
+Database changed
+
+mysql> show tables;
++---------------------------------+
+| Tables_in_decodemtl_addressbook |
++---------------------------------+
+| Account                         |
+| AddressBook                     |
+| Entry                           |
++---------------------------------+
+3 rows in set (0.00 sec)
+
+mysql> describe Account;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| id         | int(11)      | NO   | PRI | NULL    | auto_increment |
+| email      | varchar(255) | NO   |     | NULL    |                |
+| password   | varchar(40)  | NO   |     | NULL    |                |
+| createdOn  | datetime     | NO   |     | NULL    |                |
+| modifiedOn | datetime     | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> INSERT INTO Account (id, email, password, createdOn, modifiedOn) VALUES (1,'hello@gmail.com','hello','2016-07-15','2016-07-18');
+Query OK, 1 row affected (0.01 sec)
+
+
+mysql> SELECT * FROM Account;
++----+-----------------+----------+---------------------+---------------------+
+| id | email           | password | createdOn           | modifiedOn          |
++----+-----------------+----------+---------------------+---------------------+
+|  1 | hello@gmail.com | hello    | 2016-07-15 00:00:00 | 2016-07-18 00:00:00 |
++----+-----------------+----------+---------------------+---------------------+
+1 row in set (0.00 sec)
+
+
+
+mysql> describe AddressBook;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| id         | int(11)      | NO   | PRI | NULL    | auto_increment |
+| accountId  | int(11)      | NO   |     | NULL    |                |
+| name       | varchar(255) | NO   |     | NULL    |                |
+| createdOn  | datetime     | NO   |     | NULL    |                |
+| modifiedOn | datetime     | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> INSERT INTO AddressBook (accountId, name, createdOn, modifiedOn) VALUES (230504350, 'John', '2016-06-21', '2016-07-18');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM AddressBook;
++----+-----------+------+---------------------+---------------------+
+| id | accountId | name | createdOn           | modifiedOn          |
++----+-----------+------+---------------------+---------------------+
+|  1 | 230504350 | John | 2016-06-21 00:00:00 | 2016-07-18 00:00:00 |
++----+-----------+------+---------------------+---------------------+
+1 row in set (0.00 sec)
