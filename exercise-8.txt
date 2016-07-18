@@ -1,0 +1,20 @@
+Exercise 8
+What is the email of the Account identified by "63"?
+What are the names of the AdressBooks belonging to accountId "3"?
+On which date was the AddressBook titled “Lorem Foundation” created?
+
+
+mysql> use decodemtl_addressbook_import
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+
+
+mysql> SELECT email FROM Account WHERE id = 63;
++-------------------------------------------------+
+| email                                           |
++-------------------------------------------------+
+| consectetuer.rhoncus.Nullam@temporloremeget.org |
++-------------------------------------------------+
+1 row in set (0.00 sec)
