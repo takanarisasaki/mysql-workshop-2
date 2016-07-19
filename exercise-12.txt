@@ -1,0 +1,137 @@
+Exercise 12:
+Which Account owns the most Address Books?
+Which Address Book contains the most Entries?
+
+
+mysql> use decodemtl_addressbook_import
+Database changed
+
+mysql> SELECT COUNT(*), AccountId FROM AddressBook GROUP BY AccountId ORDER BY COUNT(*);
++----------+-----------+
+| COUNT(*) | AccountId |
++----------+-----------+
+|        3 |        52 |
+|        5 |        86 |
+|        6 |        27 |
+|        6 |        72 |
+|        6 |        17 |
+|        6 |        96 |
+|        7 |         3 |
+|        7 |        40 |
+|        7 |        15 |
+|        7 |        22 |
+|        7 |        55 |
+|        7 |        39 |
+|        7 |        89 |
+|        7 |        99 |
+|        8 |        37 |
+|        8 |        19 |
+|        8 |         4 |
+|        8 |        30 |
+|        8 |        21 |
+|        8 |        53 |
+|        9 |        67 |
+|        9 |        84 |
+|        9 |        57 |
+|        9 |        18 |
+|        9 |        10 |
+|        9 |        43 |
+|        9 |        70 |
+|        9 |        24 |
+|        9 |        94 |
+|        9 |        34 |
+|        9 |        80 |
+|        9 |        81 |
+|        9 |        92 |
+|        9 |        32 |
+|       10 |        46 |
+|       10 |        35 |
+|       10 |        36 |
+|       10 |        33 |
+|       10 |         6 |
+|       10 |        45 |
+|       10 |        47 |
+|       10 |         1 |
+|       10 |        69 |
+|       11 |        61 |
+|       11 |        38 |
+|       11 |        63 |
+|       11 |         7 |
+|       11 |        54 |
+|       11 |        85 |
+|       11 |        75 |
+|       11 |        64 |
+|       11 |        93 |
+|       11 |        50 |
+|       11 |        90 |
+|       11 |        28 |
+|       11 |        11 |
+|       12 |         8 |
+|       12 |       100 |
+|       12 |        41 |
+|       12 |        98 |
+|       12 |        74 |
+|       12 |        59 |
+|       12 |        16 |
+|       12 |        51 |
+|       12 |         9 |
+|       12 |        13 |
+|       12 |        79 |
+|       12 |        82 |
+|       12 |        44 |
+|       12 |        25 |
+|       12 |        66 |
+|       12 |        12 |
+|       13 |        60 |
+|       13 |        49 |
+|       13 |        91 |
+|       13 |        78 |
+|       13 |        73 |
+|       13 |        68 |
+|       13 |        88 |
+|       13 |        29 |
+|       13 |        48 |
+|       13 |        97 |
+|       14 |        95 |
+|       14 |        87 |
+|       14 |        56 |
+|       14 |        65 |
+|       14 |        26 |
+|       15 |        23 |
+|       15 |        71 |
+|       15 |        83 |
+|       15 |        62 |
+|       15 |        31 |
+|       15 |        77 |
+|       16 |        76 |
+|       16 |        20 |
+|       17 |         2 |
+|       18 |        42 |
+|       18 |        58 |
+|       19 |         5 |
+|       19 |        14 |
++----------+-----------+
+100 rows in set (0.00 sec)
+
+
+mysql> SELECT COUNT(*), AccountId FROM AddressBook GROUP BY AccountId ORDER BY COUNT(*) DESC LIMIT 1;
+
+OR
+
+//Does not work: mysql> SELECT MAX(most_books), AccountId FROM (SELECT COUNT(*) as most_books, AccountId FROM AddressBook GROUP BY AccountId) AS max_book;    //using max
++----------+-----------+
+| COUNT(*) | AccountId |
++----------+-----------+
+|       19 |         5 |
++----------+-----------+
+1 row in set (0.00 sec)
+
+
+
+mysql> SELECT COUNT(*), addressBookId FROM Entry GROUP BY addressBookId ORDER BY COUNT(*) DESC LIMIT 1;
++----------+---------------+
+| COUNT(*) | addressBookId |
++----------+---------------+
+|       52 |            37 |
++----------+---------------+
+1 row in set (0.00 sec)
