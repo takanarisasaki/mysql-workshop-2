@@ -1,0 +1,39 @@
+Exercise 11:
+How many Address Book Entries are not listed as other?
+How many Address Book Entries are listed as either home or work?
+How many Address Book Entries are listed as phones?
+
+
+
+mysql> use decodemtl_addressbook_import
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+
+
+mysql> SELECT COUNT(type) FROM Entry WHERE type != 'other';                                                                      
++-------------+
+| count(type) |
++-------------+
+|        2800 |
++-------------+
+1 row in set (0.00 sec)
+
+
+mysql> SELECT COUNT(type) FROM Entry WHERE type = 'home' OR type = 'work';
++-------------+
+| COUNT(type) |
++-------------+
+|        2800 |
++-------------+
+1 row in set (0.01 sec)
+
+
+mysql> SELECT COUNT(subtype) FROM Entry WHERE subtype = 'phone';
++----------------+
+| COUNT(subtype) |
++----------------+
+|            600 |
++----------------+
+1 row in set (0.00 sec)
